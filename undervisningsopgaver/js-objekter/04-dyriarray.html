@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>objekt</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+
+    <div id="liste">
+
+
+    </div>
+
+
+
+
+    <script>
+        let mineDyr = [
+
+            {
+                "navn": "gris",
+                "type": "pattedyr",
+                "billede": "http://helf-kea.dk/test/gris.png",
+                "levested": "svinefarme"
+            }, {
+                "navn": "frø",
+                "type": "amfibie",
+                "billede": "http://helf-kea.dk/test/frog.png",
+                "levested": "svinefarme"
+            }, {
+                "navn": "ræv",
+                "type": "pattedyr",
+                "billede": "http://helf-kea.dk/test/fox.png",
+                "levested": "svinefarme"
+            }, {
+                "navn": "sild",
+                "type": "fisk",
+                "billede": "http://helf-kea.dk/test/sild.jpg",
+                "levested": "svinefarme"
+            }, {
+                "navn": "krokodille",
+                "type": "krybdyr",
+                "billede": "http://helf-kea.dk/test/kroko.jpg",
+                "levested": "svinefarme"
+            },
+
+        ]
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+
+
+            let dest = document.querySelector("#liste");
+            mineDyr.forEach(dyr => {
+
+                dest.innerHTML += ` <div> <h1>${dyr.navn}</h1>  <h2>${dyr.type}</2>     <p>${dyr.levested}</p> <img src =${dyr.billede}>  </div>`;
+            })
+
+        }
+    </script>
+
+</body>
+
+</html>
