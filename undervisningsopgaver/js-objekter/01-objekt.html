@@ -30,6 +30,8 @@
             "levested": "svinefarme"
         }
 
+        console.log(`dyr: ${dyr.navn}, type: ${dyr.type}, billede: ${dyr.billede}, levested: ${dyr.levested}`);
+
         const destination = document.querySelector("#dyr");
 
 
@@ -38,6 +40,7 @@
         destination.querySelector("p").textContent = dyr.levested;
         destination.querySelector("img").src = dyr.billede;
     </script>
+
 </body>
 
 </html>
