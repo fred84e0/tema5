@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>objekt</title>
+    <link rel="stylesheet" href="">
+
+    <style>
+        .kasse {
+            border: 1px solid black;
+            padding: 2vw;
+            background-color: rgba(44, 82, 106, 0.6);
+
+
+
+        }
+
+        #liste {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            grid-gap: 5vw;
+
+        }
+
+        @media screen and (min-width: 600px) {
+
+            #liste {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                grid-gap: 2vw;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <div id="liste">
+
+
+
+
+    </div>
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", hentJson);
+
+        let mineDyr;
+
+        async function hentJson() {
+            const myJson = await fetch("dyr.json");
+            console.log(myJson);
+
+            mineDyr = await myJson.json();
+            console.log(mineDyr);
+
+            start();
+        }
+
+        function start() {
+
+
+            let dest = document.querySelector("#liste");
+            mineDyr.forEach(dyr => {
+
+                dest.innerHTML += ` <div class="kasse"> <h1>${dyr.navn}</h1>  <h2>${dyr.type}</2>     <p>${dyr.levested}</p> <img src =${dyr.billede}>  </div>`;
+            })
+
+        }
+
+    </script>
+
+</body>
+
+</html>
