@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>objekt</title>
+    <link rel="stylesheet" href="">
+
+    <style>
+        img {
+            max-width: 100%;
+        }
+
+        .kasse {
+            padding: 2vw;
+            background-color: rgba(18, 33, 29, 0.33);
+        }
+
+        .menu {
+            text-align: center;
+        }
+
+        .valgt {
+
+            transform: scale(1.1);
+            background-color: rgba(32, 43, 46, 0.62);
+        }
+
+
+
+        #liste {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            grid-gap: 5vw;
+
+        }
+
+        @media screen and (min-width: 500px) {
+
+            #liste {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 2vw;
+            }
+        }
+
+        @media screen and (min-width: 1100px) {
+
+            #liste {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-gap: 2vw;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <div class="menu">
+        <button class="filter" data-hold="alle">Alle</button>
+        <button class="filter valgt" data-hold="a">Hold A </button>
+        <button class="filter" data-hold="b">Hold B </button>
+
+
+
+    </div>
+
+    <div id="liste"></div>
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", hentJson);
+
+        let mineDyr;
+        let filter = "a";
+
+        async function hentJson() {
+            const myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1OLlD_GRoz71piHvnW306omRAyHS7vtLOILQt-K0YF_c");
+            console.log(myJson);
+
+            mineDyr = await myJson.json();
+            console.log(mineDyr);
+
+            start();
+        }
+
+        function start() {
+
+
+            let dest = document.querySelector("");
+            mineDyr.forEach(dyr => {
+                if (dyr.hold == filter) {
+
+                    dest.innerHTML += ` <div class="kasse"> <h2>${dyr.navn}</h2>  <a href="https://github.com/${dyr.github}" target="_blank" > Github </a>  <p>${dyr.alder}</p> <img src =${dyr.billede}> <p>${dyr.køn}</p> <p>${dyr.email}</p> <p>${dyr.hold}</p> <p>${dyr.historie}</p></div>`;
+
+                }
+            })
+
+        }
+
+        document.querySelectorAll(".filter").forEach(elm => {
+            elm.addEventListener("click", filtrering);
+        })
+
+        function filtrering() {
+            filter = this.getAttribute("data-hold");
+            start();
+        }
+
+    </script>
+
+</body>
+
+</html>
