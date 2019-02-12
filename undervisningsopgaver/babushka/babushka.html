@@ -18,6 +18,14 @@
 
         }
 
+        .menu {
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
         #liste {
             display: grid;
             grid-template-columns: repeat(1, 1fr);
@@ -47,6 +55,17 @@
 
 
 <body>
+
+    <header class="menu">
+        <nav>
+            <button class="filter valgt" data-hold="alle">Alle</button>
+            <button class="filter" data-hold="forretter">Forretter</button>
+            <button class="filter" data-hold="hovedretter">Hovedretter</button>
+            <button class="filter" data-hold="desserter">Desserter</button>
+        </nav>
+    </header>
+
+
 
     <div id="liste"></div>
 

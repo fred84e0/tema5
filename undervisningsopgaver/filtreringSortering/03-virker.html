@@ -60,8 +60,8 @@
 <body>
 
     <div class="menu">
-        <button class="filter" data-hold="alle">Alle</button>
-        <button class="filter valgt" data-hold="a">Hold A </button>
+        <button class="filter valgt" data-hold="alle">Alle</button>
+        <button class="filter" data-hold="a">Hold A </button>
         <button class="filter" data-hold="b">Hold B </button>
 
 
@@ -77,7 +77,7 @@
         document.addEventListener("DOMContentLoaded", hentJson);
 
         let mineDyr;
-        let filter = "a";
+        let filter = "alle";
 
         async function hentJson() {
             const myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1OLlD_GRoz71piHvnW306omRAyHS7vtLOILQt-K0YF_c");
@@ -86,22 +86,32 @@
             mineDyr = await myJson.json();
             console.log(mineDyr);
 
-            start();
+            visPersoner();
         }
 
-        function start() {
+        function visPersoner() {
 
+            dest.innerHTML = "";
 
-            let dest = document.querySelector("");
+            let dest = document.querySelector("#liste");
             mineDyr.forEach(dyr => {
-                if (dyr.hold == filter) {
+                if (filter == "alle" || filter == dyr.hold) {
 
                     dest.innerHTML += ` <div class="kasse"> <h2>${dyr.navn}</h2>  <a href="https://github.com/${dyr.github}" target="_blank" > Github </a>  <p>${dyr.alder}</p> <img src =${dyr.billede}> <p>${dyr.køn}</p> <p>${dyr.email}</p> <p>${dyr.hold}</p> <p>${dyr.historie}</p></div>`;
 
                 }
             })
-
         }
+        document.querySelectorAll(".filter").forEach(elm => {
+            elm.addEventListener("click", filtrering);
+        })
+
+        function filtrering() {
+            filter = this.getAttribute("data-hold");
+            visPersoner();
+        }
+
+        hentJson();
     </script>
 
 </body>
