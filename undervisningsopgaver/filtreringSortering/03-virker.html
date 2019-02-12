@@ -53,7 +53,6 @@
                 grid-gap: 2vw;
             }
         }
-
     </style>
 </head>
 
@@ -103,16 +102,6 @@
             })
 
         }
-
-        document.querySelectorAll(".filter").forEach(elm => {
-            elm.addEventListener("click", filtrering);
-        })
-
-        function filtrering() {
-            filter = this.getAttribute("data-hold");
-            start();
-        }
-
     </script>
 
 </body>
