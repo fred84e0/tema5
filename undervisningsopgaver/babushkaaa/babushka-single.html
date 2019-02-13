@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>objekt</title>
+    <link rel="stylesheet" href="">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: rgba(0, 128, 0, 0.68);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            font-family: sans-serif;
+        }
+
+        img {
+            border-radius: 10px;
+        }
+
+
+        .header {
+            background-color: rgba(73, 53, 186, 0.62);
+            padding: 1px;
+        }
+
+        .header h4 {
+            font-family: fantasy;
+            font-size: 26px;
+            text-align: center;
+        }
+
+        button {
+            background-color: #042e05;
+            border: none;
+            color: white;
+            padding: 2vw 2vw;
+            text-align: center;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+
+        img {
+            max-width: 100%;
+        }
+
+        .kasse {
+
+            margin: 2vw;
+            padding: 2vw;
+            background-color: rgba(255, 255, 0, 0.49);
+            border-radius: 10px;
+
+        }
+
+        .menu {
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #liste {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            grid-gap: 5vw;
+
+        }
+
+
+
+        #popup {
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            background-color: hsla(0, 15%, 48%, 0.5);
+            overflow: scroll;
+            display: none;
+
+        }
+
+        #indhold {
+            min-height: 50vh;
+            background-color: rgb(196, 196, 0);
+            width: 90vw;
+            margin: 4rem auto;
+            border-radius: 10px;
+            padding: 10px;
+
+        }
+
+        #luk {
+            position: fixed;
+            right: 2rem;
+            padding-right: 2rem;
+
+        }
+
+        #luk button {
+
+            font-size: 2rem;
+            padding: 1rem 2rem;
+            background-color: rgb(196, 196, 0);
+            border: none;
+            border-radius: 10px 10px 0 0;
+            margin-top: 10px;
+        }
+
+        #luk button:hover {
+            cursor: pointer;
+        }
+
+        .valgt {
+            background-color: rgba(239, 255, 214, 0.44);
+        }
+
+
+        @media screen and (min-width: 500px) {
+
+            #liste {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 2vw;
+            }
+        }
+
+        @media screen and (min-width: 1100px) {
+
+            #liste {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-gap: 2vw;
+            }
+
+
+            #popup img {
+                max-width: 70%;
+            }
+
+
+            #indhold {
+                min-height: 60vh;
+                background-color: rgb(196, 196, 0);
+                width: 60vw;
+                margin: 4rem auto;
+                border-radius: 10px;
+                padding: 10px;
+
+            }
+
+            #luk {
+                position: fixed;
+                right: 16rem;
+                padding-right: 2rem;
+
+            }
+
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+    <div class="header">
+
+        <h4>Restaurant BABUSHKA</h4>
+
+    </div>
+
+    <div id="popup">
+        <div id="luk">
+            <button> X </button>
+        </div>
+        <div id="indhold"></div>
+    </div>
+
+    <header class="menu">
+        <h1>Alle</h1>
+        <nav>
+            <button class="filter valgt" data-hold="alle">Alle</button>
+            <button class="filter" data-hold="forretter">Forretter</button>
+            <button class="filter" data-hold="hovedretter">Hovedretter</button>
+            <button class="filter" data-hold="desserter">Desserter</button>
+        </nav>
+    </header>
+
+
+
+    <div id="liste"></div>
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", hentJson);
+
+        let mineRetter = [];
+        let filter = "alle";
+        let dest = document.querySelector("#liste");
+
+        async function hentJson() {
+            const myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1jxxxFoWBuMJ1qhQ9BQIAyKHmP38XtAF9_sQr0xo5JLo");
+            console.log(myJson);
+
+            mineRetter = await myJson.json();
+            console.log(mineRetter);
+
+            start();
+        }
+
+        function start() {
+
+            dest.innerHTML = "";
+            mineRetter.forEach(ret => {
+
+                if (filter == "alle" || filter == ret.kategori) {
+                    let template = ` <div class="kasse"> <h2>${ret.navn}</h2> <h3> Pris ${ret.pris}.-</h3>  <p>${ret.kort}</p> <img src=imgs/small/${ret.billede}-sm.jpg  <p>Oprindelse: ${ret.oprindelse}</p></div>`;
+
+
+                    dest.insertAdjacentHTML("beforeend", template);
+                    dest.lastElementChild.addEventListener("click", () => {
+                        location.href = "01-babushka-single.html?id=" + ret.id;
+                    });
+                }
+            });
+
+        }
+
+        document.querySelectorAll(".filter").forEach(elm => {
+            elm.addEventListener("click", filtering);
+        });
+
+
+        function filtering() {
+            filter = this.getAttribute("data-hold");
+            document.querySelector("h1").textContent = this.textContent;
+            document.querySelectorAll(".filter").forEach(elm => {
+                elm.classList.remove("valgt");
+            });
+            this.classList.add("valgt");
+            start();
+        }
+
+
+        function visSingle(ret) {
+            document.querySelector("#indhold").innerHTML = `<article class="ret"> <h2>${ret.navn}</h2><img class="billede" src="imgs/large/${ret.billede}.jpg" alt="${ret.navn}"><p>hold: ${ret.hold}</p> <p>Alder: ${ret.alder}</p> <p>${ret.historie} </p></article>`;
+
+            document.querySelector("#popup").style.display = "block";
+            document.querySelector("#popup #luk").addEventListener("click", close);
+        }
+
+        function close() {
+            document.querySelector("#popup").style.display = "none";
+        }
+    </script>
+
+</body>
+
+</html>

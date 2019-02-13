@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single</title>
+    <link rel="stylesheet" href="">
+
+    <style>
+        img {
+            max-width: 100%;
+        }
+
+        .kasse {
+            padding: 2vw;
+            background-color: rgba(18, 33, 29, 0.33);
+
+        }
+
+        .menu {
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #liste {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            grid-gap: 5vw;
+
+        }
+
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        #popup {
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+
+            overflow: scroll;
+            display: none;
+        }
+
+        #indhold {
+            min-height: 50vh;
+            background-color: rgb(196, 196, 0);
+            width: 70vw;
+            margin: 4rem auto;
+        }
+
+        #tilbage {
+            position: fixed;
+            right: 2rem;
+            padding-right: 2rem;
+        }
+
+        #tilbage button {
+            font-size: 2rem;
+            padding: 1rem 2rem;
+            background-color: rgb(196, 196, 0);
+        }
+
+        #tilbage button:hover {
+            cursor: pointer;
+        }
+
+        .valgt {
+            background-color: chartreuse;
+        }
+
+
+        @media screen and (min-width: 500px) {
+
+            #liste {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 2vw;
+            }
+        }
+
+        @media screen and (min-width: 1100px) {
+
+            #liste {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-gap: 2vw;
+            }
+
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div id="single">
+        <div id="tilbage">
+            <button> X </button>
+        </div>
+        <div id="indhold"></div>
+    </div>
+
+
+    <script>
+        let urlParams = new URLSearchParams(window.location.search)
+        let id = urlParams.get("id");
+        console.log(id);
+
+
+        document.addEventListener("DOMContentLoaded", hentJson);
+
+        let mineRetter = [];
+        let filter = "alle";
+        let dest = document.querySelector("#indhold");
+
+        async function hentJson() {
+            const myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1jxxxFoWBuMJ1qhQ9BQIAyKHmP38XtAF9_sQr0xo5JLo");
+            console.log(myJson);
+
+            mineRetter = await myJson.json();
+            console.log(mineRetter);
+
+            start();
+        }
+
+        function start() {
+
+            let dest = document.querySelector("#indhold");
+            dest.innerHTML = "";
+            mineRetter.forEach(ret => {
+                if (id == ret.id) {
+                    let template = ` <div class="kasse"> <h2>${ret.navn}</h2> <h3> Pris ${ret.pris}.-</h3>  <p>${ret.kort}</p> <img src=imgs/small/${ret.billede}-sm.jpg  <p>${ret.lang}</p> <p>Oprindelse: ${ret.oprindelse}</p></div>`;
+                    dest.insertAdjacentHTML("beforeend", template);
+
+
+                }
+
+
+            });
+
+        }
+
+        hentJson();
+
+        document.querySelector("#tilbage button").addEventListener("click", () => {
+            location.href = "babushka-single.html"
+        })
+    </script>
+
+</body>
+
+</html>
