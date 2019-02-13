@@ -48,14 +48,14 @@
             width: 100vw;
             height: 100vh;
             position: fixed;
-            background-color: hsla(0, 15%, 48%, 0.5);
+
             overflow: scroll;
             display: none;
         }
 
         #indhold {
             min-height: 50vh;
-            background-color: white;
+            background-color: rgb(196, 196, 0);
             width: 70vw;
             margin: 4rem auto;
         }
@@ -69,6 +69,7 @@
         #tilbage button {
             font-size: 2rem;
             padding: 1rem 2rem;
+            background-color: rgb(196, 196, 0);
         }
 
         #tilbage button:hover {
@@ -96,8 +97,8 @@
                 grid-template-columns: repeat(3, 1fr);
                 grid-gap: 2vw;
             }
-        }
 
+        }
     </style>
 </head>
 
@@ -156,7 +157,6 @@
         document.querySelector("#tilbage button").addEventListener("click", () => {
             location.href = "babushka-single.html"
         })
-
     </script>
 
 </body>
