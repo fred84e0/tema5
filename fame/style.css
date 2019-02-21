@@ -1,0 +1,179 @@
+   body {
+       margin: 0;
+       padding: 0;
+       background-image: url("italien/baggrund.jpg");
+   }
+
+
+
+   nav {
+       display: flex;
+       justify-content: space-around;
+       align-items: center;
+       min-height: 8vh;
+       min-width: 400px;
+       background-color: rgba(34, 29, 26, 0.88);
+       position: fixed;
+       z-index: 3;
+   }
+
+   .logo img {
+
+       max-width: 150px;
+       padding: 10px;
+
+   }
+
+   .nav_links {
+       display: flex;
+       justify-content: space-around;
+       width: 25%;
+   }
+
+   .nav_links a {
+       color: #c7c7c7;
+       text-decoration: none;
+       letter-spacing: 3px;
+
+   }
+
+   .nav_links li {
+       list-style: none;
+   }
+
+   .burger {
+       display: none;
+       cursor: pointer;
+   }
+
+
+   .burger div {
+
+       width: 25px;
+       height: 3px;
+       background-color: #c7c7c7;
+       margin: 5px;
+
+   }
+
+
+   #splash img {
+       max-width: 100%;
+
+
+
+   }
+
+
+   .knapper {
+       display: grid;
+       grid-template-columns: repeat(5, 1fr);
+       grid-gap: 5vw;
+
+   }
+
+   .knapper img {
+       max-width: 250px;
+       border-radius: 15px;
+
+   }
+
+
+   .menuknap {
+       grid-column: 2 / 5;
+       grid-row: 2 / 3;
+       margin-top: 30px;
+
+   }
+
+   .omknap {
+       grid-column: 2 / 5;
+       grid-row: 3 / 4;
+   }
+
+
+   .bookknap {
+       grid-column: 2 / 5;
+       grid-row: 4 / 5;
+       margin-bottom: 40px;
+
+   }
+
+   .omknap img,
+   .bookknap img {
+       filter: brightness(50%);
+   }
+
+   .knapspec {
+
+       position: relative;
+       top: -65px;
+       left: 90px;
+       color: white;
+
+   }
+
+   h1 {
+       margin: 0;
+       padding: 0;
+   }
+
+
+
+
+
+
+   .kontaktinfo {
+       display: flex;
+       justify-content: space-around;
+       align-items: center;
+       min-height: 8vh;
+       background-color: rgba(34, 29, 26, 0.88);
+
+   }
+
+   .kontaktinfo li {
+       list-style: none;
+       color: #bababa;
+   }
+
+
+
+
+   @media screen and (max-width: 768px) {
+
+       #liste {
+           display: grid;
+           grid-template-columns: repeat(2, 1fr);
+           grid-gap: 2vw;
+       }
+
+       body {
+           overflow-x: hidden;
+       }
+
+
+       .nav_links {
+           position: absolute;
+           right: 0px;
+           height: 92vh;
+           top: 15vh;
+           background-color: rgba(34, 29, 26, 0.88);
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           transform: translateX(100%);
+           transition: transform 0.5s ease-in;
+       }
+
+       .nav_links li {}
+
+       .burger {
+           display: block;
+       }
+
+   }
+
+   .nav_active {
+       transform: translateX(0%);
+   }
