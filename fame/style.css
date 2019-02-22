@@ -26,9 +26,8 @@
        justify-content: space-around;
        align-items: center;
        min-height: 8vh;
-       min-width: 420px;
+       min-width: 440px;
        background-color: rgba(34, 29, 26, 0.88);
-
        z-index: 3;
    }
 
@@ -394,5 +393,23 @@
    }
 
    .nav_active {
-       transform: translateX(0%);
+       transform: translateX(-10%);
+   }
+
+   @media screen and (min-width: 768px) {
+
+
+       .headernav {
+           display: flex;
+           justify-content: space-around;
+           align-items: center;
+           min-height: 8vh;
+           min-width: 1000px;
+           background-color: rgba(34, 29, 26, 0.88);
+
+           z-index: 3;
+       }
+
+
+
    }
