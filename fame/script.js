@@ -42,7 +42,7 @@ function start() {
     mineRetter.forEach(ret => {
 
         if (filter == "alle" || filter == ret.kategori) {
-            let template = ` <div class="kasse"> <div class="tekst"> <h2>${ret.navn}</h2> <h3> Pris ${ret.pris}.-</h3>  <p>${ret.kort}</p> </div> <div class="madpic"> <img src="italien/${ret.billede}" </div> </div>`;
+            let template = ` <div class="kasse"> <div class="tekst"> <h2>${ret.navn}</h2> <p>${ret.kort}</p>  <h3> Pris ${ret.pris}.-</h3></div> <div class="madpic"> <img src="italien/${ret.billede}" </div> </div>`;
 
 
             dest.insertAdjacentHTML("beforeend", template);

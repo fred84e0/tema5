@@ -5,8 +5,20 @@
    }
 
 
+   h1,
+   h2 {
+       font-family: Lato, sans-serif;
+   }
 
-   nav {
+   h3,
+   p {
+       font-family: Basic, sans-serif;
+   }
+
+
+
+
+   .headernav {
        display: flex;
        justify-content: space-around;
        align-items: center;
@@ -16,6 +28,46 @@
 
        z-index: 3;
    }
+
+   .filtermenu h1 {
+       display: flex;
+       justify-content: space-around;
+       align-items: center;
+       font-size: 30pt;
+   }
+
+   .filtermenu {
+       border-bottom: solid;
+       margin: 0 10px;
+   }
+
+   .filterknap {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+
+   }
+
+   .filterknap button {
+       background-color: rgba(34, 29, 26, 0.88);
+       border: none;
+       color: white;
+       padding: 10px 10px;
+       margin: 10px;
+       text-align: center;
+       text-decoration: none;
+       display: inline-block;
+       font-size: 10pt;
+       border-radius: 5px;
+
+   }
+
+
+
+
+
+
+
 
    .headernav {
        position: fixed;
@@ -124,6 +176,25 @@
 
    a {
        text-decoration: none;
+   }
+
+
+
+   .omtekst {
+
+       padding-left: 5vw;
+       padding-top: 100px;
+
+   }
+
+   .ompic img {
+       max-width: 90%;
+       margin-left: 5vw;
+       border-radius: 10px
+   }
+
+   .ompic {
+       padding-bottom: 30px;
    }
 
 
