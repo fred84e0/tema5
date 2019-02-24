@@ -483,6 +483,30 @@
        }
 
 
+       .omsection {
+           display: flex;
+           flex-wrap: wrap;
+
+           padding-bottom: 25vw;
+
+       }
+
+       .omtekst {
+           flex-grow: 1;
+           flex-basis: 300px;
+       }
+
+       .ompic {
+           flex-grow: 1;
+           flex-basis: 300px;
+
+           margin-right: 5vw;
+
+           margin-top: 25vh;
+       }
+
+
+
 
 
 
@@ -510,5 +534,13 @@
        .book {
            margin: 0 300px 50px 300px;
        }
+
+       .omsection {
+
+
+           padding-bottom: 5vw;
+
+       }
+
 
    }
