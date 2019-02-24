@@ -102,6 +102,12 @@
        font-family: Lato, sans-serif;
    }
 
+   .nav_links li:hover {
+       transform: scale(1.1);
+       filter: brightness(150%);
+
+   }
+
    .burger {
        display: none;
        cursor: pointer;
@@ -135,6 +141,23 @@
        border-radius: 15px;
 
    }
+
+   .menuknap:hover {
+       transform: scale(1.04);
+       filter: brightness(120%);
+   }
+
+   .omknap:hover {
+       transform: scale(1.04);
+       filter: brightness(120%);
+   }
+
+   .bookknap:hover {
+       transform: scale(1.04);
+       filter: brightness(120%);
+   }
+
+
 
 
    .menuknap {
@@ -343,8 +366,6 @@
 
    .kontaktinfo {
        display: flex;
-       justify-content: space-around;
-       align-items: center;
        min-height: 8vh;
        background-color: rgba(34, 29, 26, 0.88);
 
@@ -393,7 +414,101 @@
    }
 
    .nav_active {
-       transform: translateX(-10%);
+       transform: translateX(0%);
    }
 
-   @media screen and (min-width: 768px) {}
+   @media screen and (min-width: 768px) {
+
+
+
+       #liste {
+           display: grid;
+           grid-template-columns: repeat(2, 1fr);
+           grid-gap: 2vw;
+       }
+
+       .knapper {
+           display: grid;
+           grid-template-columns: repeat(3, 1fr);
+           grid-template-rows: 1fr;
+
+           grid-gap: 5vw;
+           margin-top: 35px;
+
+           margin: 30px;
+
+       }
+
+       /*
+
+       .bookknap {
+           margin: 0 20px 0 0;
+       }
+
+       .menuknap {
+           margin: 0 0 0 20px;
+       }
+*/
+
+       .knapper img {
+           max-width: 250px;
+           border-radius: 15px;
+
+
+       }
+
+
+       .menuknap {
+           grid-column: 1 / 2;
+           grid-row: 1 / 2;
+           margin-top: 0;
+
+       }
+
+       .omknap {
+           grid-column: 2 / 3;
+           grid-row: 1 / 2;
+       }
+
+
+       .bookknap {
+           grid-column: 3 / 4;
+           grid-row: 1 / 2;
+
+
+       }
+
+       .book {
+           margin: 0 100px 50px 100px;
+       }
+
+
+
+
+
+   }
+
+   @media screen and (min-width: 1280px) {
+
+
+       #liste {
+           display: grid;
+           grid-template-columns: repeat(3, 1fr);
+           grid-gap: 2vw;
+       }
+
+
+       .knapper {
+           margin-top: 30px;
+       }
+
+       .menuknap {
+
+           margin: 0 0 0 40px;
+       }
+
+       .book {
+           margin: 0 300px 50px 300px;
+       }
+
+   }
