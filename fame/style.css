@@ -439,6 +439,34 @@
 
        }
 
+       .bookknap .knapspec {
+
+           position: relative;
+           top: -55px;
+           left: 65px;
+           color: #F0DCD4;
+
+       }
+
+       .omknap .knapspec {
+
+           position: relative;
+           top: -55px;
+           left: 75px;
+           color: #F0DCD4;
+
+       }
+
+       .menuknap .knapspec {
+
+           position: relative;
+           top: -55px;
+           left: 60px;
+           color: #F0DCD4;
+
+       }
+
+
        /*
 
        .bookknap {
@@ -451,7 +479,7 @@
 */
 
        .knapper img {
-           max-width: 250px;
+           max-width: 200px;
            border-radius: 15px;
 
 
@@ -522,13 +550,50 @@
        }
 
 
+       .knapper img {
+           max-width: 250px;
+           border-radius: 15px;
+
+
+       }
+
+       .bookknap .knapspec {
+
+           position: relative;
+           top: -63px;
+           left: 88px;
+           color: #F0DCD4;
+
+       }
+
+       .omknap .knapspec {
+
+           position: relative;
+           top: -63px;
+           left: 95px;
+           color: #F0DCD4;
+
+       }
+
+       .menuknap .knapspec {
+
+           position: relative;
+           top: -63px;
+           left: 80px;
+           color: #F0DCD4;
+
+       }
+
+
+
        .knapper {
            margin-top: 30px;
+           margin-left: 85px;
        }
 
        .menuknap {
 
-           margin: 0 0 0 40px;
+           margin: 0 0 0 30px;
        }
 
        .book {
