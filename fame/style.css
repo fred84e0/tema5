@@ -262,6 +262,18 @@
 
    }
 
+   .kasse:hover {
+       cursor: pointer;
+
+   }
+
+   /*
+   .kasse img:hover {
+       transform: scale(1.01);
+
+   }
+*/
+
 
    .tekst {
        flex-grow: 1;
@@ -322,47 +334,61 @@
 
 
 
-   /*
+
    #indhold {
-       min-height: 50vh;
-       background-color: rgb(196, 196, 0);
+       min-height: 40vh;
+       background-color: rgba(212, 212, 212, 0.83);
        width: 90vw;
        margin: 4rem auto;
        border-radius: 10px;
        padding: 10px;
-}
+   }
+
+   #indhold img {
+       max-width: 300px;
+
+   }
 
    #popup {
-       top: 200px;
+       top: 100px;
        width: 100vw;
        height: 100vh;
        position: fixed;
-       background-color: hsla(0, 15%, 48%, 0.5);
+       background-color: hsla(0, 0%, 0%, 0.6);
        overflow: scroll;
        display: none;
    }
 
+
    #luk {
        position: fixed;
-       right: 2rem;
+       right: .01rem;
+       top: 11rem;
        padding-right: 2rem;
 
    }
+
+
 
    #luk button {
 
        font-size: 2rem;
        padding: 1rem 2rem;
-       background-color: rgb(196, 196, 0);
+       background-color: rgba(34, 29, 26, 0.88);
        border: none;
-       border-radius: 10px 10px 0 0;
+       border-radius: 10px;
        margin-top: 10px;
+       color: rgba(217, 217, 217, 0.78);
    }
 
+
    #luk button:hover {
+       transform: scale(1.1);
        cursor: pointer;
+       filter: brightness(150%);
+
    }
-*/
+
 
 
 
@@ -544,11 +570,41 @@
        }
 
 
+       #luk {
+           position: fixed;
+           right: 12rem;
+           top: 9.5rem;
+           padding-right: 2rem;
+
+       }
+
+       #indhold {
+           min-height: 40vh;
+           background-color: rgba(212, 212, 212, 0.83);
+           width: 65vw;
+           margin: 4rem auto;
+           border-radius: 10px;
+           padding: 10px;
+       }
+
+       #indhold img {
+           max-width: 380px;
+
+       }
+
+       #popup {
+           top: 70px;
+
+       }
+
 
 
 
 
    }
+
+
+
 
    @media screen and (min-width: 1270px) {
 
@@ -629,13 +685,38 @@
 
        }
 
-          .omtekst p {
-              padding: 5px;
+       .omtekst p {
+           padding: 5px;
 
 
-   }
+       }
 
+       #luk {
+           position: fixed;
+           right: 22rem;
+           top: 9.5rem;
+           padding-right: 2rem;
 
+       }
+
+       #indhold {
+           min-height: 40vh;
+           background-color: rgba(212, 212, 212, 0.83);
+           width: 45vw;
+           margin: 4rem auto;
+           border-radius: 10px;
+           padding: 10px;
+       }
+
+       #indhold img {
+           max-width: 380px;
+
+       }
+
+       #popup {
+           top: 70px;
+
+       }
 
 
    }
